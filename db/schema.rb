@@ -17,11 +17,11 @@ ActiveRecord::Schema.define(version: 20151026204253) do
   enable_extension "plpgsql"
 
   create_table "critiques", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "review_id"
-    t.integer  "keypoint_id"
-    t.string   "title"
-    t.text     "body"
+    t.integer  "user_id",     null: false
+    t.integer  "review_id",   null: false
+    t.integer  "keypoint_id", null: false
+    t.string   "title",       null: false
+    t.text     "body",        null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -31,26 +31,26 @@ ActiveRecord::Schema.define(version: 20151026204253) do
   add_index "critiques", ["user_id"], name: "index_critiques_on_user_id", using: :btree
 
   create_table "keypoints", force: :cascade do |t|
-    t.string   "image_path"
-    t.string   "name"
+    t.string   "image_path", null: false
+    t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "movies", force: :cascade do |t|
-    t.string   "title"
-    t.text     "synopsis"
-    t.date     "release_date"
-    t.string   "director"
+    t.string   "title",        null: false
+    t.text     "synopsis",     null: false
+    t.date     "release_date", null: false
+    t.string   "director",     null: false
     t.string   "still_path"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
 
   create_table "replies", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "critique_id"
-    t.text     "body"
+    t.integer  "user_id",     null: false
+    t.integer  "critique_id", null: false
+    t.text     "body",        null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -59,12 +59,12 @@ ActiveRecord::Schema.define(version: 20151026204253) do
   add_index "replies", ["user_id"], name: "index_replies_on_user_id", using: :btree
 
   create_table "reviews", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "movie_id"
-    t.text     "body"
-    t.string   "thesis"
-    t.string   "title"
-    t.integer  "rating"
+    t.integer  "user_id",    null: false
+    t.integer  "movie_id",   null: false
+    t.text     "body",       null: false
+    t.string   "thesis",     null: false
+    t.string   "title",      null: false
+    t.integer  "rating",     null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -73,8 +73,8 @@ ActiveRecord::Schema.define(version: 20151026204253) do
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "topics", force: :cascade do |t|
-    t.integer  "keypoint_id"
-    t.integer  "review_id"
+    t.integer  "keypoint_id", null: false
+    t.integer  "review_id",   null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -83,8 +83,8 @@ ActiveRecord::Schema.define(version: 20151026204253) do
   add_index "topics", ["review_id"], name: "index_topics_on_review_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "username"
-    t.string   "email"
+    t.string   "username",                        null: false
+    t.string   "email",                           null: false
     t.string   "password_digest"
     t.boolean  "trusted",         default: false
     t.datetime "created_at",                      null: false
@@ -92,9 +92,9 @@ ActiveRecord::Schema.define(version: 20151026204253) do
   end
 
   create_table "votes", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "review_id"
-    t.integer  "sentiment"
+    t.integer  "user_id",    null: false
+    t.integer  "review_id",  null: false
+    t.integer  "sentiment",  null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
