@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  resources :replies
-  resources :votes
-  resources :critiques
-  resources :users
   get 'movie/create'
 
   get 'movie/new'
@@ -17,7 +13,19 @@ Rails.application.routes.draw do
 
   get 'movie/destroy'
 
-  resources :reviews
+  resources :users
+  
+  resources :reviews do
+    resources :critiques
+  end
+
+  resources :critiques do
+    resources :replies
+  end
+
+  resources :reviews do
+    resources :votes
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
