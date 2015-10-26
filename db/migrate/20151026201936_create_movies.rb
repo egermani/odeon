@@ -5,6 +5,7 @@ class CreateMovies < ActiveRecord::Migration
       t.text :synopsis
       t.date :release_date
       t.string :director
+      t.string :still_path
 
       t.timestamps null: false
     end
