@@ -1,19 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @review.user %>
-</p>
-
+<div class="still">
+  <%= @review.movie.id %>
+  <img width='800' height='450' src="<%= @review.movie.still_path %>">
+</div>
 <p>
   <strong>Movie:</strong>
-  <%= @review.movie %>
+  <%= @review.movie.title %>
 </p>
 
 <p>
-  <strong>Body:</strong>
-  <%= @review.body %>
+  <strong>Stars:</strong>
+  <%= @review.rating %>/10
 </p>
+
+<p>
+  <strong>By:</strong> <%= @review.reviewer.username %>
+</p>
+
+
 
 <p>
   <strong>Thesis:</strong>
@@ -26,9 +31,19 @@
 </p>
 
 <p>
-  <strong>Rating:</strong>
-  <%= @review.rating %>
+  <strong>Body:</strong>
+  <%= @review.body %>
 </p>
+
+<div id = "critiques">
+  <ul>
+  <% @review.critiques.each do |crit|%>
+    <li>
+    <%=crit.title%> -- <%=crit.body%>
+    </li>
+  <% end %>
+  </ul>
+</div>
 
 <%= link_to 'Edit', edit_review_path(@review) %> |
 <%= link_to 'Back', reviews_path %>

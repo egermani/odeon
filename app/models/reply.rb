@@ -4,5 +4,5 @@ class Reply < ActiveRecord::Base
 
   validates :user_id, presence: true
   validates :critique_id, presence: true
-  validates :text, presence: true
+  validates :body, presence: true
 end

@@ -6,7 +6,7 @@ class Critique < ActiveRecord::Base
 
   validates :user_id, presence: true
   validates :review_id, presence: true
-  validates :keypoint, presence: true
+  validates :keypoint_id, presence: true
   validates :title, presence: true
   validates :body, presence: true
 
