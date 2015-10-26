@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 	has_many :replies
 	has_many :critiques
 	has_many :votes
+	has_many :votes_for, through: :reviews, source: :votes
 
 	has_secure_password
 end

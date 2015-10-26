@@ -4,4 +4,5 @@ class Review < ActiveRecord::Base
   has_many :topics
   has_many :critiques
   has_many :keypoints, through: :topics
+  has_many :votes
 end
