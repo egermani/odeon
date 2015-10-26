@@ -25,5 +25,27 @@ keypoints.each do |hash|
 end
 
 User.all.each do |user|
-  user.reviews.create(movie: Movie.sample, body: Faker::Lorem.paragraphs(3), thesis: Faker::Lorem.sentence, title: Faker::Hacker.ingverb, rating: Faker::Number.digit)
+  user.reviews.create(movie: Movie.all.sample, body: Faker::Lorem.paragraphs(3), thesis: Faker::Lorem.sentence, title: Faker::Hacker.ingverb, rating: Faker::Number.digit)
+end
+
+User.all.each do |user|
+  Review.all.each do |review|
+    user.votes.create(review: review, sentiment: Faker::Number.between(0, 3))
+  end
+end
+
+User.all.each do |user|
+  Review.all.each do |review|
+    user.critiques.create(review: review, keypoint_id: Keypoint.all.sample.id, title: Faker::Lorem.word, body: Faker::Lorem.sentence)
+  end
+end
+
+User.all.each do |user|
+  Critique.all.each do |crit|
+    user.replies.create(critique: crit, body: Faker::Lorem.sentence)
+  end
+end
+
+Review.all.each do |review|
+  review.topics.create(keypoint: Keypoint.all.sample)
 end
