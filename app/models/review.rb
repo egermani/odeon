@@ -1,5 +1,5 @@
 class Review < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :reviewer, class_name: "User", foreign_key: "user_id"
   belongs_to :movie
   has_many :topics
   has_many :critiques
@@ -12,5 +12,4 @@ class Review < ActiveRecord::Base
   validates :thesis, presence: true
   validates :title, presence: true
   validates :rating, presence: true
-
 end
