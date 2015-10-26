@@ -4,6 +4,7 @@ class Review < ActiveRecord::Base
   has_many :topics
   has_many :critiques
   has_many :keypoints, through: :topics
+  has_many :votes
 
   validates :user_id, presence: true
   validates :movie_id, presence: true
