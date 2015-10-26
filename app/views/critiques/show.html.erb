@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @critique.user %>
+</p>
+
+<p>
+  <strong>Review:</strong>
+  <%= @critique.review %>
+</p>
+
+<p>
+  <strong>Keypoint:</strong>
+  <%= @critique.keypoint %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @critique.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @critique.body %>
+</p>
+
+<%= link_to 'Edit', edit_critique_path(@critique) %> |
+<%= link_to 'Back', critiques_path %>
