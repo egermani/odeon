@@ -1,63 +1,72 @@
 <p id="notice"><%= notice %></p>
+<div class="review-container">
+  <div class="still">
+    <img width='800' height='450' src="<%= @review.movie.still_path %>">
+  </div>
+  <p>
+    <h2><%= @review.movie.title %></h2>
+  </p>
 
-<div class="still">
-  <img width='800' height='450' src="<%= @review.movie.still_path %>">
+  <p>
+    <div class="icon-stack-review">
+      <i class="glyphicon glyphicon-star big-star"></i>
+      <span class="review-rating"><%= @review.rating %></span>
+    </div>
+  </p>
+
+  <p>
+    <h3><%= @review.title %></h3>
+
+  </p>
+
+  <p>
+    <h4>By: <%= @review.reviewer.username %></h4>
+  </p>
+
+
+
+  <p>
+    <strong><%= @review.thesis %></strong>
+
+  </p>
+
+
+  <div class='review-body'>
+    <p><%= @review.body %></p>
+  </div>
+
+  <p>
+    <h4>Rate this review!</h4>
+  </p>
+
+  <div id="critiques-container">
+    <ul id="critique-list">
+    <% @review.critiques.each do |crit| %>
+      <li id="<%=crit.id%>" ><%=crit.title%><br>
+        <%=crit.body%><br>
+        by <%=crit.critiquer.username%>
+        <a id="show_replies" href="<%=crit.id%>">show replies</a>
+          <ul id="replies-list">
+            <%crit.replies.each do |reply| %>
+              <li><%=reply.body%><br>
+                by <%=reply.replier.username%>
+              </li>
+            <% end %>
+            <% @critique = Critique.find(crit.id)%>
+            <% @reply = Reply.new() %>
+            <%= render 'replies/form' %>
+          </ul>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+
+  <div id="critique-form">
+    <% @critique = Critique.new() %>
+    <%= render 'critiques/form' %>
+  </div>
+
+  <%= link_to 'Edit', edit_review_path(@review) %> |
+  <%= link_to 'Back', reviews_path %>
+
 </div>
-<p>
-  <strong>Movie:</strong>
-  <%= @review.movie.title %>
-</p>
-
-<p>
-  <strong>Stars:</strong>
-  <%= @review.rating %>/10
-</p>
-
-<p>
-  <strong>By:</strong> <%= @review.reviewer.username %>
-</p>
-
-
-
-<p>
-  <strong>Thesis:</strong>
-  <%= @review.thesis %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @review.title %>
-</p>
-
-<p>
-  <%= @review.body %>
-</p>
-
-<div id="critiques-container">
-  <ul id="critique-list">
-  <% @review.critiques.each do |crit| %>
-    <li id="<%=crit.id%>" ><%=crit.title%><br>
-      <%=crit.body%><br>
-      by <%=crit.critiquer.username%>
-      <a id="show_replies" href="<%=crit.id%>">show replies</a>
-        <ul id="replies-list">
-          <%crit.replies.each do |reply| %>
-            <li><%=reply.body%><br>
-              by <%=reply.replier.username%>
-            </li>
-          <% end %>
-          <% @critique = Critique.find(crit.id)%>
-          <% @reply = Reply.new() %>
-          <%= render 'replies/form' %>
-        </ul>
-    </li>
-  <% end %>
-</div>
-
-<div id="critique-form">
-  <% @critique = Critique.new() %>
-  <%= render 'critiques/form' %>
-</div>
-
-<%= link_to 'Edit', edit_review_path(@review) %> |
-<%= link_to 'Back', reviews_path %>
