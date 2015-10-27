@@ -48,4 +48,17 @@
   overflow: hidden;
   max-height: 7.2em;
   line-height: 1.8em;
-}
+};
+
+.featured-image {
+  h1 {
+    display: block;
+    vertical-align: middle;
+    top: 25%;
+    position: absolute;
+    color: white;
+    text-align: center;
+    font-size: 7em;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  };
+};
