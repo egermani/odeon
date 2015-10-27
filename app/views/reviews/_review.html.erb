@@ -4,7 +4,7 @@
 		<span class="review-rating"><%= review.rating %></span>
 	<div>
 <div class="review-matter">
-	<h3><%= review.title %></h3>
+	<h3><%= link_to(review.title, review) %></h3>
 	<p><%= review.thesis %></p>
 </div>
 
