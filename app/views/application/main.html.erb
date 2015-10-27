@@ -1,0 +1,47 @@
+<div class="still center featured">
+  <a href="/reviews/<%=@movies[0].reviews[0].id%>"><img width='100%' src="<%= @movies[0].still_path %>"></a>
+  <p class="featured-title">
+    <%= @movies[0].title %>
+  </p>
+  <p>
+    <i><%= @movies[0].reviews[0].thesis %></i>
+  </p>
+  <p class="landing-review">
+    <%= @movies[0].reviews[0].body %>
+  </p>
+</div>
+
+<div class="container padding-bot-4">
+  <div class="row">
+      <div class="col-xs-4 small-movie-feature">
+          <div class="div-top">
+            <img width = '95%' src="<%= @movies[1].still_path%>">
+          </div>
+          <div class="div-bot">
+            <p><strong><%=@movies[1].title%></strong></p>
+            <p><strong><i><%=@movies[1].reviews[0].thesis%></i></strong></p>
+            <p class="max-lines"><%=@movies[1].reviews[0].body%></p>
+          </div>
+      </div>
+      <div class="col-xs-4 small-movie-feature">
+        <div class="div-top">
+          <img width = '95%' src="<%= @movies[2].still_path%>">
+        </div>
+        <div class="div-bot">
+          <p><strong><%=@movies[2].title%></strong></p>
+          <p><strong><i><%=@movies[2].reviews[0].thesis%></i></strong></p>
+          <p class="max-lines"><%=@movies[2].reviews[0].body%></p>
+        </div>
+      </div>
+      <div class="col-xs-4 small-movie-feature">
+        <div class="div-top">
+          <img width = '95%' src="<%= @movies[3].still_path%>">
+        </div>
+        <div class="div-bot">
+          <p><strong><%=@movies[3].title%></strong></p>
+          <p><strong><i><%=@movies[3].reviews[0].thesis%></i></strong></p>
+          <p class="max-lines"><%=@movies[3].reviews[0].body%></p>
+        </div>
+      </div>
+  </div>
+</div>

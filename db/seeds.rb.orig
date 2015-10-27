@@ -1,6 +1,7 @@
 require 'csv'
 
 # table.headers => => ["Movie", "Release Year", "Rating", "# of Ratings", "Genre", "Awards", "Oscar Ws", "Oscar Ns", "Other Ws", "Other Ns", "Director", "Cast", "Description"]
+puts "Creating Users"
 
 5.times do
   User.create!(username: Faker::Internet.user_name, email: Faker::Internet.email, password: "password")
@@ -9,7 +10,7 @@ end
 puts "Creating Movies"
 
 CSV.foreach('db/movies.csv', headers: true) do |movie|
-  Movie.create!(:title => movie["Movie"].strip,
+  Movie.create!(:title => movie["Movie"],
                 :release_date => ("1-1-"+movie["Release Year"]).to_date,
                 :genres => movie["Genre"].split(", ").map {|g| Genre.find_or_create_by(name: g)},
                 :director => movie["Director"],
@@ -52,6 +53,10 @@ User.all.each do |user|
   end
 end
 
+User.all.each do |user|
+  Critique.all.each do |crit|
+    user.replies.create!(critique: crit, body: Faker::Lorem.sentence)
+  end
 puts "Creating Replies"
 
 20.times do

@@ -8,12 +8,13 @@ class Movie < ActiveRecord::Base
 	validates :release_date, presence: true
 	validates :director, presence: true
 
+<<<<<<< HEAD
 	def self.sort
 		Movie.all.sort_by {|movie| movie.reviews.count * -1}
-	end
-
+=======
 	def composite_score
 		reviews.map(&:rating).reduce(:+) / reviews.count
+>>>>>>> 321abf4c13364d3fc105935fe7258e9a0da9977d
 	end
 
 end
