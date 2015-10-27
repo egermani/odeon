@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151026204253) do
+ActiveRecord::Schema.define(version: 20151027124736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,12 +30,28 @@ ActiveRecord::Schema.define(version: 20151026204253) do
   add_index "critiques", ["review_id"], name: "index_critiques_on_review_id", using: :btree
   add_index "critiques", ["user_id"], name: "index_critiques_on_user_id", using: :btree
 
+  create_table "genres", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "keypoints", force: :cascade do |t|
     t.string   "image_path", null: false
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "movie_genres", force: :cascade do |t|
+    t.integer  "movie_id"
+    t.integer  "genre_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "movie_genres", ["genre_id"], name: "index_movie_genres_on_genre_id", using: :btree
+  add_index "movie_genres", ["movie_id"], name: "index_movie_genres_on_movie_id", using: :btree
 
   create_table "movies", force: :cascade do |t|
     t.string   "title",        null: false
@@ -105,6 +121,8 @@ ActiveRecord::Schema.define(version: 20151026204253) do
   add_foreign_key "critiques", "keypoints"
   add_foreign_key "critiques", "reviews"
   add_foreign_key "critiques", "users"
+  add_foreign_key "movie_genres", "genres"
+  add_foreign_key "movie_genres", "movies"
   add_foreign_key "replies", "critiques"
   add_foreign_key "replies", "users"
   add_foreign_key "reviews", "movies"
