@@ -5,3 +5,28 @@
 #critiques-container {
 
 }
+
+.big-star {
+	font-size: 5em;
+	color: palegoldenrod;
+	position: relative;
+}
+
+.review-rating {
+	font-size: 1.75em;
+	position: absolute;
+	left: 26px;
+	top: 19px;
+}
+
+.review-matter {
+	margin-left: 6em;
+}
+
+.icon-stack {
+    position: relative;
+    display: inline-block;
+}
+.icon-stack .glyphicon {
+    position: absolute; 
+}

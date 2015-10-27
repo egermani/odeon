@@ -1,4 +1,32 @@
 <p id="notice"><%= notice %></p>
 
+<div class="still">
+	<% if @movie.title == "Guardians of the Galaxy " %>
+  	<%= image_tag("guardians.jpg", width: 800, height: 450) %>
+  <% else %>
+  	<%= image_tag(@movie.still_path, width: 800, height: 450) %>
+  <% end %>
+</div>
+<p>
+  <strong>Movie:</strong>
+  <%= @movie.title %>
+</p>
+
+<p>
+  <strong>Composite Score:</strong>
+  <%= @movie.composite_score %>/10
+</p>
+
+<p>
+  <strong>Director:</strong> <%= @movie.director %>
+</p>
+
+<p>
+  <strong>Synopsis:</strong>
+  <%= @movie.synopsis %>
+</p>
+
+<%= render @movie.reviews %>
+
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <%= link_to 'Back', movies_path %>

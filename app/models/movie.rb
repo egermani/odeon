@@ -8,4 +8,8 @@ class Movie < ActiveRecord::Base
 	validates :release_date, presence: true
 	validates :director, presence: true
 
+	def composite_score
+		reviews.map(&:rating).reduce(:+) / reviews.count
+	end
+
 end
