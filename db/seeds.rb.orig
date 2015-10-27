@@ -1,6 +1,7 @@
 require 'csv'
 
 # table.headers => => ["Movie", "Release Year", "Rating", "# of Ratings", "Genre", "Awards", "Oscar Ws", "Oscar Ns", "Other Ws", "Other Ns", "Director", "Cast", "Description"]
+puts "Creating Users"
 
 5.times do
   User.create!(username: Faker::Internet.user_name, email: Faker::Internet.email, password: "password")
@@ -52,6 +53,10 @@ User.all.each do |user|
   end
 end
 
+User.all.each do |user|
+  Critique.all.each do |crit|
+    user.replies.create!(critique: crit, body: Faker::Lorem.sentence)
+  end
 puts "Creating Replies"
 
 20.times do

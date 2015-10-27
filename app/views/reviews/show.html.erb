@@ -34,7 +34,12 @@
 </p>
 
 <div id="critiques-container">
-  <%= (react_component 'CritiqueBox', { data: @review.critiques.to_json}) %>
+  <%= (react_component 'CritiqueBox', { data: @review.critiques.to_json, review_num: @review.id}) %>
+</div>
+
+<div id="critique-form">
+  <% @critique = Critique.new() %>
+  <%= render 'critiques/form' %>
 </div>
 
 <%= link_to 'Edit', edit_review_path(@review) %> |
