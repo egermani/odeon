@@ -9,7 +9,7 @@ end
 puts "Creating Movies"
 
 CSV.foreach('db/movies.csv', headers: true) do |movie|
-  Movie.create!(:title => movie["Movie"],
+  Movie.create!(:title => movie["Movie"].strip,
                 :release_date => ("1-1-"+movie["Release Year"]).to_date,
                 :genres => movie["Genre"].split(", ").map {|g| Genre.find_or_create_by(name: g)},
                 :director => movie["Director"],

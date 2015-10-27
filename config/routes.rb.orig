@@ -1,17 +1,5 @@
 Rails.application.routes.draw do
-  get 'movie/create'
-
-  get 'movie/new'
-
-  get 'movie/show'
-
-  get 'movie/edit'
-
-  get 'movie/update'
-
-  get 'movie/index'
-
-  get 'movie/destroy'
+  resources :movies
 
   resources :users
 
@@ -28,7 +16,12 @@ Rails.application.routes.draw do
   end
 
   root 'application#main'
-  
+
+  resources :replies
+
+  resources :sessions, only: [:new, :create, :destroy]
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

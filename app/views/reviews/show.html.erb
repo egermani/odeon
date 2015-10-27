@@ -34,7 +34,24 @@
 </p>
 
 <div id="critiques-container">
-  <%= (react_component 'CritiqueBox', { data: @review.critiques.to_json, review_num: @review.id}) %>
+  <ul id="critique-list">
+  <% @review.critiques.each do |crit| %>
+    <li id="<%=crit.id%>" ><%=crit.title%><br>
+      <%=crit.body%><br>
+      by <%=crit.critiquer.username%>
+      <a id="show_replies" href="<%=crit.id%>">show replies</a>
+        <ul id="replies-list">
+          <%crit.replies.each do |reply| %>
+            <li><%=reply.body%><br>
+              by <%=reply.replier.username%>
+            </li>
+          <% end %>
+          <% @critique = Critique.find(crit.id)%>
+          <% @reply = Reply.new() %>
+          <%= render 'replies/form' %>
+        </ul>
+    </li>
+  <% end %>
 </div>
 
 <div id="critique-form">
