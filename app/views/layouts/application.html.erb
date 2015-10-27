@@ -7,10 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="navbar navbar-default">
-    <p class="navbar-text pull-right"><a href="log_out_link_here">Log out</a> | <a href="/">Log in</a></p>
+  <div class="navbar navbar-default center">
+    <p class="navbar-text">
+    <% if session[:user_id] %>
+      <a href="/logout">Log out</a>
+    <%else%>
+      <a href="/login">Log in</a>
+    <%end%>
+    </p>
   </div>
-<%= yield %>
+  <div id="main-container" class="container">
+    <%= yield %>
+  </div>
 
 </body>
 </html>

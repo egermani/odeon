@@ -1,20 +1,20 @@
 Rails.application.routes.draw do
-  get 'movie/create'
+  get 'movies/create'
 
-  get 'movie/new'
+  get 'movies/new'
 
-  get 'movie/show'
+  get 'movies/show'
 
-  get 'movie/edit'
+  get 'movies/edit'
 
-  get 'movie/update'
+  get 'movies/update'
 
-  get 'movie/index'
+  get 'movies/index'
 
-  get 'movie/destroy'
+  get 'movies/destroy'
 
   resources :users
-  
+
   resources :reviews do
     resources :critiques
   end
