@@ -10,9 +10,9 @@
   <div class="navbar navbar-default center">
     <p class="navbar-text">
     <% if session[:user_id] %>
-      <a href="/logout">Log out</a>
+      <%= link_to "Log out", { controller: :sessions, action: :destroy, id: session[:user_id] }, method: :delete %>
     <%else%>
-      <a href="/login">Log in</a>
+      <%= link_to "Log in", new_session_path %>
     <%end%>
     </p>
   </div>
