@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <div class="still">
-  <%= @review.movie.id %>
   <img width='800' height='450' src="<%= @review.movie.still_path %>">
 </div>
 <p>
@@ -31,18 +30,11 @@
 </p>
 
 <p>
-  <strong>Body:</strong>
   <%= @review.body %>
 </p>
 
-<div id = "critiques">
-  <ul>
-  <% @review.critiques.each do |crit|%>
-    <li>
-    <%=crit.title%> -- <%=crit.body%>
-    </li>
-  <% end %>
-  </ul>
+<div id="critiques-container">
+  <%= (react_component 'CritiqueBox', { data: @review.critiques.to_json}) %>
 </div>
 
 <%= link_to 'Edit', edit_review_path(@review) %> |
