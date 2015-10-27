@@ -1,10 +1,11 @@
 class CritiquesController < ApplicationController
   before_action :set_critique, only: [:show, :edit, :update, :destroy]
+  before_action :set_review, only: [:index]
 
   # GET /critiques
   # GET /critiques.json
   def index
-    @critiques = Critique.all
+    @critiques = @review.critiques
   end
 
   # GET /critiques/1
@@ -65,6 +66,10 @@ class CritiquesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_critique
       @critique = Critique.find(params[:id])
+    end
+
+    def set_review
+      @review = Review.find(params[:review_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

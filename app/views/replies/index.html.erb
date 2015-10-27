@@ -5,7 +5,7 @@
 <table>
   <thead>
     <tr>
-      <th>User</th>
+      <th>Replier</th>
       <th>Critique</th>
       <th>Body</th>
       <th colspan="3"></th>
@@ -15,7 +15,7 @@
   <tbody>
     <% @replies.each do |reply| %>
       <tr>
-        <td><%= reply.user %></td>
+        <td><%= reply.replier %></td>
         <td><%= reply.critique %></td>
         <td><%= reply.body %></td>
         <td><%= link_to 'Show', reply %></td>
