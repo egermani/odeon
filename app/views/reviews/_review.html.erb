@@ -4,7 +4,7 @@
 		<span class="review-rating"><%= review.rating %></span>
 	</div>
 <div class="review-matter">
-	<h3><%= link_to(review.title, review) %></h3>
+	<span class = "big"><%= link_to('"'+review.title+'"', review) %></span> by <%= review.reviewer.username %>
 	<p><%= review.thesis %></p>
 </div>
 <div class="keypoint">

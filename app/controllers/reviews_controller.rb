@@ -28,6 +28,7 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.save
+        session[:movie_id] = nil
         format.html { redirect_to @review, notice: 'Review was successfully created.' }
         format.json { render :show, status: :created, location: @review }
       else
