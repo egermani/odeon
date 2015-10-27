@@ -1,6 +1,6 @@
 class CritiquesController < ApplicationController
   before_action :set_critique, only: [:show, :edit, :update, :destroy]
-  before_action :set_review, only: [:index, :create]
+  before_action :set_review, only: [:index]
 
   # GET /critiques
   # GET /critiques.json
@@ -25,13 +25,12 @@ class CritiquesController < ApplicationController
   # POST /critiques
   # POST /critiques.json
   def create
-    session[:user_id] = 1
-    @user = User.find(session[:user_id])
-    @critique = @review.critiques.build(critique_params)
+    @review = Review.find(params[:critique][:review_id])
+    @critique = Critique.new(critique_params)
 
     respond_to do |format|
       if @critique.save
-        format.html { redirect_to @critique, notice: 'Critique was successfully created.' }
+        format.html { redirect_to review_path(@review)}
         format.json { render :show, status: :created, location: @critique }
       else
         format.html { render :new }
@@ -71,7 +70,7 @@ class CritiquesController < ApplicationController
     end
 
     def set_review
-      @review = Review.find(params[:review_id])
+      @review = Review.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -12,15 +12,19 @@
   <% end %>
 
   <div class="field">
-    <%= f.hidden_field :user_id, :value => sessions[:user_id]%>
+    <%= f.hidden_field :user_id, :value => session[:user_id]%>
   </div>
   <div class="field">
     <%= f.hidden_field :review_id, :value => @review.id%>
   </div>
-  <div class="field">
-    <%= f.label :keypoint_id %><br>
-    <%= f.text_field :keypoint_id %>
+  <div class="keypoint-fields">
+  <%= f.select(:keypoint_id) do %>
+    <%@review.keypoints.each do |keypoint| -%>
+      <%=content_tag(:option, keypoint.name, value: keypoint.id)%>
+    <%end%>
+  <%end%>
   </div>
+
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
