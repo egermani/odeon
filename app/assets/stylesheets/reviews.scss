@@ -8,9 +8,11 @@
 
 #critique-list {
   list-style:none;
+  text-align: left;
 }
 
 #critique-list li {
+  text-align: left;
   border-bottom: 1px solid black;
 }
 
@@ -36,9 +38,20 @@
     display: inline-block;
 }
 
+.icon-stack-review {
+    position: relative;
+    display: inline-block;
+}
+
 .icon-stack .glyphicon {
     position: absolute;
+}
 
 #replies-list {
   display: none;
+}
+
+.review-container {
+  margin:auto;
+  text-align: center
 }
