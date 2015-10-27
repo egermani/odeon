@@ -36,7 +36,9 @@
   </div>
 
   <p>
-    <h4>Rate this review!</h4>
+    <h4>Rate the quality of this review!</h4>
+    <% @vote = Vote.new() %>
+    <%= render 'votes/form' %>
   </p>
 
   <div id="critiques-container">
