@@ -26,7 +26,7 @@
       <li>genres
         <ul id="sub1">
             <% Genre.all.each do |genre| %>
-              <li><a href="genres/<%=genre.id%>"><%=genre.name%></a></li>
+              <li><a href="/genres/<%=genre.id%>"><%=genre.name%></a></li>
             <%end%>
         </ul>
       </li>
