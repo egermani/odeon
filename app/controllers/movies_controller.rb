@@ -24,7 +24,7 @@ class MoviesController < ApplicationController
   # POST /movies
   # POST /movies.json
   def create
-    @movie = Movie.new(Movie_params)
+    @movie = Movie.new(movie_params)
 
     respond_to do |format|
       if @movie.save
@@ -41,7 +41,7 @@ class MoviesController < ApplicationController
   # PATCH/PUT /movies/1.json
   def update
     respond_to do |format|
-      if @movie.update(Movie_params)
+      if @movie.update(movie_params)
         format.html { redirect_to @movie, notice: 'Movie was successfully updated.' }
         format.json { render :show, status: :ok, location: @movie }
       else
@@ -63,12 +63,12 @@ class MoviesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_Movie
+    def set_movie
       @movie = Movie.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def Movie_params
-      params.require(:Movie).permit(:user_id, :movie_id, :body, :thesis, :title, :rating)
+    def movie_params
+      params.require(:movie).permit(:title, :synopsis, :release_date, :director)
     end
 end
