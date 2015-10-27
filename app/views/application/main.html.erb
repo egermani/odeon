@@ -3,17 +3,18 @@
     <a href="/reviews/<%=@movies[0].reviews[0].id%>"><img width='100%' src="<%= @movies[0].still_path %>"></a>
     <h1><b><%=@movies[0].title.upcase%></b></h1>
   </div>
-  <p class="featured-title">
-    <%= @movies[0].title %>
-  </p>
-  <p>
-    <i><%= @movies[0].reviews[0].thesis %></i>
-  </p>
-  <p class="landing-review">
-    <%= @movies[0].reviews[0].body %>
-  </p>
+  <div class="featured-text padding-top-2">
+    <p class="featured-thesis">
+      <i><%= @movies[0].reviews[0].thesis %></i>
+    </p>
+    <p class="landing-review padding-top-2">
+      <%= @movies[0].reviews[0].body %>
+    </p>
+  </div>
 </div>
-
+<hr />
+<h1><center><strong>FEATURED FILMS</strong></center></h1>
+<hr />
 <div class="container padding-bot-4">
   <div class="row">
       <div class="col-xs-4 small-movie-feature">
