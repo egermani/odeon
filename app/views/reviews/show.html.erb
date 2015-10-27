@@ -52,19 +52,22 @@
                 by <%=reply.replier.username%>
               </li>
             <% end %>
-            <% @critique = Critique.find(crit.id)%>
-            <% @reply = Reply.new() %>
-            <%= render 'replies/form' %>
+            <% if session[:user_id] %>
+              <% @critique = Critique.find(crit.id)%>
+              <% @reply = Reply.new() %>
+              <%= render 'replies/form' %>
+            <% end %>
           </ul>
       </li>
     <% end %>
     </ul>
   </div>
-
-  <div id="critique-form">
-    <% @critique = Critique.new() %>
-    <%= render 'critiques/form' %>
-  </div>
+  <% if session[:user_id] %>
+    <div id="critique-form">
+      <% @critique = Critique.new() %>
+      <%= render 'critiques/form' %>
+    </div>
+  <% end %>
 
   <%= link_to 'Edit', edit_review_path(@review) %> |
   <%= link_to 'Back', reviews_path %>
