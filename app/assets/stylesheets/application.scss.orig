@@ -14,6 +14,10 @@
  *=require_tree .
  */
 
-
 @import "bootstrap-sprockets";
 @import "bootstrap";
+<<<<<<< HEAD
+@import "./navbar";
+@import "./landing_page";
+=======
+>>>>>>> 321abf4c13364d3fc105935fe7258e9a0da9977d
