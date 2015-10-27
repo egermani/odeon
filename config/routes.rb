@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
-  get 'movies/create'
+  get 'movie/create'
 
-  get 'movies/new'
+  get 'movie/new'
 
-  get 'movies/show'
+  get 'movie/show'
 
-  get 'movies/edit'
+  get 'movie/edit'
 
-  get 'movies/update'
+  get 'movie/update'
 
-  get 'movies/index'
+  get 'movie/index'
 
-  get 'movies/destroy'
+  get 'movie/destroy'
 
   resources :users
 
@@ -26,6 +26,9 @@ Rails.application.routes.draw do
   resources :reviews do
     resources :votes
   end
+
+  root ""
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
