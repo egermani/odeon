@@ -1,4 +1,4 @@
-<%= form_for(@vote) do |f| %>
+<%= form_for([@review,@vote], url: {action: "create"}) do |f| %>
   <% if @vote.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@vote.errors.count, "error") %> prohibited this vote from being saved:</h2>
@@ -12,17 +12,20 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
+    <%= f.hidden_field :user_id, :value => session[:user_id]%>
   </div>
   <div class="field">
-    <%= f.label :review_id %><br>
-    <%= f.text_field :review_id %>
+    <%= f.hidden_field :review_id, :value => @review.id%>
   </div>
-  <div class="field">
-    <%= f.label :sentiment %><br>
-    <%= f.number_field :sentiment %>
-  </div>
+
+  <%= radio_button_tag(:sentiment, "0") %>
+  <%= label_tag(:sentiment_poor, "Poor") %>
+  <%= radio_button_tag(:sentiment, "1") %>
+  <%= label_tag(:sentiment_fair, "Fair") %>
+  <%= radio_button_tag(:sentiment, "2") %>
+  <%= label_tag(:sentiment_good, "Good") %>
+  <%= radio_button_tag(:sentiment, "3") %>
+  <%= label_tag(:sentiment_great, "Amazing") %>
   <div class="actions">
     <%= f.submit %>
   </div>
