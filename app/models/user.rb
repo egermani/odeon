@@ -11,7 +11,11 @@ class User < ActiveRecord::Base
 	validates :password, presence: true
 
 
-
+	def trusted?
+		if condition
+			
+		end
+	end
 
 	private
 

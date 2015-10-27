@@ -14,7 +14,13 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/new
   def new
-    @review = Review.new
+    if params[:movie]
+      @movie = Movie.find(params[:movie])
+      p @movie
+      @review = Review.new
+    else
+      redirect_to root_path unless params[:movie]
+    end
   end
 
   # GET /reviews/1/edit
@@ -35,6 +41,7 @@ class ReviewsController < ApplicationController
         format.json { render json: @review.errors, status: :unprocessable_entity }
       end
     end
+    session[:movie_id] = nil
   end
 
   # PATCH/PUT /reviews/1

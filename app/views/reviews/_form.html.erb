@@ -12,28 +12,26 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
+    <%= f.hidden_field :user_id, :value => session[:user_id] %>
   </div>
-  <div class="field">
-    <%= f.label :movie_id %><br>
-    <%= f.text_field :movie_id %>
-  </div>
-  <div class="field">
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
-  </div>
-  <div class="field">
-    <%= f.label :thesis %><br>
-    <%= f.text_field :thesis %>
+    <div class="field">
+    <%= f.hidden_field :movie_id, :value => session[:movie_id] %>
   </div>
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
   </div>
   <div class="field">
+    <%= f.label :thesis %><br>
+    <%= f.text_field :thesis %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br>
+    <%= f.text_area :body, size: "100x20" %>
+  </div>
+  <div class="field">
     <%= f.label :rating %><br>
-    <%= f.number_field :rating %>
+    <%= f.number_field :rating, min: 0, max: 9 %>
   </div>
   <div class="actions">
     <%= f.submit %>
