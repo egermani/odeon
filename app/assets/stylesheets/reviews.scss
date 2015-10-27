@@ -6,6 +6,14 @@
 
 }
 
+#critique-list {
+  list-style:none;
+}
+
+#critique-list li {
+  border-bottom: 1px solid black;
+}
+
 #replies-list {
   display: none;
 }
