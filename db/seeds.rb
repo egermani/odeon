@@ -1,20 +1,21 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'csv'
+
+# table.headers => => ["Movie", "Release Year", "Rating", "# of Ratings", "Genre", "Awards", "Oscar Ws", "Oscar Ns", "Other Ws", "Other Ns", "Director", "Cast", "Description"]
 
 30.times do
   User.create(username: Faker::Internet.user_name, email: Faker::Internet.email, password: "password")
 end
 
-50.times do
-  Movie.create(title: Faker::App.name, synopsis: Faker::Lorem.sentences(2), release_date: Faker::Date.backward(700), director: Faker::App.author, still_path: Faker::Avatar.image)
+CSV.foreach('db/movies.csv', headers: true) do |movie|
+  Movie.create!(:title => movie["Movie"],
+                :release_date => ("1-1-"+movie["Release Year"]).to_date,
+                :genres => movie["Genre"].split(", ").map {|g| Genre.find_or_create_by(name: g)},
+                :director => movie["Director"],
+                :synopsis => movie["Description"],
+                :still_path => Faker::Avatar.image)
 end
 
-keypoints = [{image_path: Faker::Avatar.             image, name: "Acting"},
+keypoints = [{image_path: Faker::Avatar.image, name: "Acting"},
              {image_path: Faker::Avatar.image, name: "Cinematography"},
              {image_path: Faker::Avatar.image, name: "Score"},
              {image_path: Faker::Avatar.image, name: "Writing"},
@@ -26,6 +27,7 @@ end
 
 User.all.each do |user|
   user.reviews.create(movie: Movie.all.sample, body: Faker::Lorem.paragraphs(3), thesis: Faker::Lorem.sentence, title: Faker::Hacker.ingverb, rating: Faker::Number.digit)
+  user.reviews.create(movie: Movie.find(1), body: Faker::Lorem.paragraphs(3), thesis: Faker::Lorem.sentence, title: Faker::Hacker.ingverb, rating: Faker::Number.digit)
 end
 
 User.all.each do |user|
