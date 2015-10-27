@@ -1,17 +1,5 @@
 Rails.application.routes.draw do
-  get 'movie/create'
-
-  get 'movie/new'
-
-  get 'movie/show'
-
-  get 'movie/edit'
-
-  get 'movie/update'
-
-  get 'movie/index'
-
-  get 'movie/destroy'
+  resources :movies
 
   resources :users
 
