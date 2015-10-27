@@ -44,8 +44,11 @@
           <%crit.replies.each do |reply| %>
             <li><%=reply.body%><br>
               by <%=reply.replier.username%>
-            <li>
+            </li>
           <% end %>
+          <% @critique = Critique.find(crit.id)%>
+          <% @reply = Reply.new() %>
+          <%= render 'replies/form' %>
         </ul>
     </li>
   <% end %>
