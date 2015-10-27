@@ -21,7 +21,9 @@ keypoints = [{image_path: Faker::Avatar.image, name: "Acting"},
              {image_path: Faker::Avatar.image, name: "Cinematography"},
              {image_path: Faker::Avatar.image, name: "Score"},
              {image_path: Faker::Avatar.image, name: "Writing"},
-             {image_path: Faker::Avatar.image, name: "Visual Effects"}]
+             {image_path: Faker::Avatar.image, name: "Visual Effects"},
+             {image_path: Faker::Avatar.image,
+               name: "Misc."}]
 
 puts "Creating Keypoints"
 

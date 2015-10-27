@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 <div class="review-container">
   <div class="still">
-    <img width='800' height='450' src="<%= @review.movie.still_path %>">
+    <%= image_tag(@review.movie.still_path, width: 800, height: 450) %>
   </div>
   <p>
     <h2><%=link_to "#{@review.movie.title}", movie_path(@review.movie) %></h2>
@@ -36,19 +36,30 @@
   </div>
 
   <p>
-    <h4>Rate the quality of this review!</h4>
-    <% p @review %>
-    <% @vote = @review.votes.new %>
-    <%= render 'votes/form' %>
+    <% if session[:user_id] %>
+      <h4>Submit feedback on this review!</h4>
+      <% p @review %>
+      <% @vote = @review.votes.new %>
+      <%= render 'votes/form' %>
+    <% else %>
+      <%= link_to 'Log in to submit feedback', new_session_path%>
+    <% end %>
   </p>
 
   <div id="critiques-container">
     <ul id="critique-list">
     <% @review.critiques.each do |crit| %>
-      <li id="<%=crit.id%>" ><%=crit.title%><br>
+      <li id="<%=crit.id%>" >
+        <!--need to do this correctly-->
+        <% @crit = crit %>
+        <%= render 'critiques/show_keypoint'%>
+        <strong class="crit-title"><%=crit.title%></strong><br>
         <%=crit.body%><br>
-        by <%=crit.critiquer.username%>
+
+        by <em><%=crit.critiquer.username%></em>
+
         <a id="show_replies" href="<%=crit.id%>">show replies</a>
+
           <ul id="replies-list">
             <%crit.replies.each do |reply| %>
               <li><%=reply.body%><br>
@@ -61,6 +72,7 @@
               <%= render 'replies/form' %>
             <% end %>
           </ul>
+
       </li>
     <% end %>
     </ul>

@@ -18,10 +18,10 @@
     <%= f.hidden_field :critique_id, :value => @critique.id%>
   </div>
   <div class="field">
-    <%= f.label :body %><br>
+    <%= f.label :body, "reply here" %><br>
     <%= f.text_area :body %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit value: "submit reply"%>
   </div>
 <% end %>
