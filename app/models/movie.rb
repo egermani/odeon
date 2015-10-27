@@ -13,7 +13,11 @@ class Movie < ActiveRecord::Base
 	end
 
 	def composite_score
-		reviews.map(&:rating).reduce(:+) / reviews.count
+		if reviews.length == 0
+			"??"
+		else
+			reviews.map(&:rating).reduce(:+) / reviews.count 
+		end
 	end
 
 end
