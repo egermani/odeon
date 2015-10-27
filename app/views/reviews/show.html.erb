@@ -37,8 +37,7 @@
 
   <p>
     <% if session[:user_id] %>
-      <h4>Submit feedback on this review!</h4>
-      <% p @review %>
+      <h4>Submit feedback on this review</h4>
       <% @vote = @review.votes.new %>
       <%= render 'votes/form' %>
     <% else %>
