@@ -1,6 +1,6 @@
 class CritiquesController < ApplicationController
   before_action :set_critique, only: [:show, :edit, :update, :destroy]
-  before_action :set_review, only: [:index]
+  before_action :set_review, only: [:index, :create]
 
   # GET /critiques
   # GET /critiques.json
@@ -25,7 +25,9 @@ class CritiquesController < ApplicationController
   # POST /critiques
   # POST /critiques.json
   def create
-    @critique = Critique.new(critique_params)
+    session[:user_id] = 1
+    @user = User.find(session[:user_id])
+    @critique = @review.critiques.build(critique_params)
 
     respond_to do |format|
       if @critique.save
