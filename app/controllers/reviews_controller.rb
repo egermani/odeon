@@ -16,7 +16,6 @@ class ReviewsController < ApplicationController
   def new
     if params[:movie]
       @movie = Movie.find(params[:movie])
-      p @movie
       @review = Review.new
     else
       redirect_to root_path unless params[:movie]
