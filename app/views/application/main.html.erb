@@ -1,0 +1,29 @@
+<div class="still center featured">
+  <a href="/reviews/<%=@movies[0].reviews[0].id%>"><img width='100%' src="<%= @movies[0].still_path %>"></a>
+  <p class="featured-title">
+    <%= @movies[0].title %>
+  </p>
+  <p>
+    <i><%= @movies[0].reviews[0].thesis %></i>
+  </p>
+  <p class="landing-review">
+    <%= @movies[0].reviews[0].body %>
+  </p>
+</div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-xs-4">
+          <img src="<%= @movies[1].still_path%>">
+          <p><strong><%=@movies[1].reviews[0].thesis%></strong></p>
+      </div>
+      <div class="col-xs-4">
+          <img src="<%= @movies[1].still_path%>">
+          <p><strong><%=@movies[1].reviews[0].thesis%></strong></p>
+      </div>
+      <div class="col-xs-4">
+          <img src="<%= @movies[1].still_path%>">
+          <p><strong><%=@movies[1].reviews[0].thesis%></strong></p>
+      </div>
+  </div>
+</div>

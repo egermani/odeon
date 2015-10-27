@@ -8,4 +8,8 @@ class Movie < ActiveRecord::Base
 	validates :release_date, presence: true
 	validates :director, presence: true
 
+	def self.sort
+		Movie.all.sort_by {|movie| movie.reviews.count * -1}
+	end
+
 end
