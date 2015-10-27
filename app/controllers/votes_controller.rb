@@ -28,10 +28,15 @@ class VotesController < ApplicationController
 
     respond_to do |format|
       if @vote.save
+        #set user to trusted if threshold is reached
+        @user = User.find(@vote.review.user_id)
+        @user.trusted = true if @user.is_trusted?
+
         format.html { redirect_to @vote.review, notice: 'Vote was successfully created.' }
         format.json { render :show, status: :created, location: @vote }
       else
-        format.html { render :new }
+        p @vote.errors.full_messages
+        format.html { redirect_to @vote.review, notice: 'Vote failed to save. Please try again.' }
         format.json { render json: @vote.errors, status: :unprocessable_entity }
       end
     end

@@ -18,11 +18,18 @@
     <%= f.hidden_field :review_id, :value => @review.id%>
   </div>
   <div class="keypoint-fields">
-  <%= f.select(:keypoint_id) do %>
-    <%@review.keypoints.each do |keypoint| -%>
-      <%=content_tag(:option, keypoint.name, value: keypoint.id)%>
-    <%end%>
-  <%end%>
+    <%= f.radio_button(:keypoint_id, "1") %>
+    <%= f.label(:name, "Acting", :class => "glyphicon glyphicon-user") %>
+    <%= f.radio_button(:keypoint_id, "2") %>
+    <%= f.label(:name, "Cinematography", :class => "glyphicon glyphicon-film") %>
+    <%= f.radio_button(:keypoint_id, "3") %>
+    <%= f.label(:name, "Score", :class => "glyphicon glyphicon-music") %>
+    <%= f.radio_button(:keypoint_id, "4") %>
+    <%= f.label(:name, "Writing", :class => "glyphicon glyphicon-pencil") %>
+    <%= f.radio_button(:keypoint_id, "5") %>
+    <%= f.label(:name, "Visual Effects", :class => "glyphicon glyphicon-fire") %>
+    <%= f.radio_button(:keypoint_id, "6") %>
+    <%= f.label(:name, "Misc.", :class => "glyphicon glyphicon-asterisk") %>
   </div>
 
   <div class="field">
@@ -34,6 +41,6 @@
     <%= f.text_area :body %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit value: "submit critique" %>
   </div>
 <% end %>

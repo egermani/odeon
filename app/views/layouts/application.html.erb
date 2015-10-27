@@ -8,13 +8,29 @@
 </head>
 <body>
   <div class="navbar navbar-default center">
-    <p class="navbar-text">
-    <% if session[:user_id] %>
-      <%= link_to "Log out", { controller: :sessions, action: :destroy, id: session[:user_id] }, method: :delete %>
-    <%else%>
-      <%= link_to "Log in", new_session_path %>
-    <%end%>
-    </p>
+    <ul id="menu">
+      <li><a href="/">home</a></li>
+      <% if session[:user_id] %>
+        <li>
+          <%= link_to "log out", { controller: :sessions, action: :destroy, id: session[:user_id] }, method: :delete %>
+        </li>
+      <%else%>
+        <li>
+          <%= link_to "log in", new_session_path %>
+        </li>
+        <li>
+          <%= link_to "register", new_user_path %>
+        </li>
+      <%end%>
+      <li><a href=""</li>
+      <li>genres
+        <ul id="sub1">
+            <% Genre.all.each do |genre| %>
+              <li><a href="genres/<%=genre.id%>"><%=genre.name%></a></li>
+            <%end%>
+        </ul>
+      </li>
+  </ul>
   </div>
   <div id="main-container" class="container">
     <%= yield %>
