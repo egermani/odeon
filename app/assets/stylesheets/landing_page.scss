@@ -13,6 +13,39 @@
   text-overflow: ellipsis;
 };
 
-.margin-bot-4 {
+.padding-bot-4 {
   padding-bottom: 4em;
+};
+
+.div-top {
+  top: 0;
+  height: 50%;
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle;
+    top: 50%;
+    position: relative;
+    transform: translateY(-50%);
+  };
+};
+
+.div-bot {
+  bottom: 0;
+  height: 50%;
+  p {
+    text-align: center;
+  };
+};
+
+.small-movie-feature {
+  height: 500px;
+};
+
+.max-lines {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-height: 7.2em;
+  line-height: 1.8em;
 }
