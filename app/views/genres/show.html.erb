@@ -8,10 +8,10 @@
     <% @movies.each do |movie| %>
       <li style="list-style: none;">
         <div class="col-md-12">
-          <div class="movie-image col-md-1">
-            <img src="<%=movie.still_path%>">
+          <div class="movie-image col-md-2">
+            <%= image_tag(movie.still_path) %>
           </div>
-          <div class="movie-container col-md-11 pull-right">
+          <div class="movie-container col-md-10 pull-right">
             <div class="movie-title">
               <a href="/movies/<%=movie.id%>"><%=movie.title%></a>
             </div>
