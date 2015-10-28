@@ -11,14 +11,16 @@
 </p>
 
 <p>
-  <strong>Password digest:</strong>
-  <%= @user.password_digest %>
-</p>
-
-<p>
   <strong>Trusted:</strong>
   <%= @user.trusted %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<p>
+  <strong>Current Score:</strong>
+  <%= @user.score %>
+</p>
+
+<p>
+  <strong>Current Votes:</strong>
+  <%= @user.votes %>
+</p>

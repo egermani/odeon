@@ -5,6 +5,10 @@
 	</div>
 <div class="review-matter">
 	<span class = "big"><%= link_to('"'+review.title+'"', review) %></span> by <%= review.reviewer.username %>
+	<% if review.reviewer.trusted == true %>
+		<i class= "glyphicon glyphicon-ok">
+		</i>
+	<% end %>
 	<p><%= review.thesis %></p>
 </div>
 <div class="keypoint">
