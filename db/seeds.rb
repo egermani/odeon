@@ -35,12 +35,12 @@ puts "Creating Reviews"
 5.times do
   User.all.each do |user|
     movie = Movie.all.sample
-    user.reviews.create!(movie: movie, body: Faker::Lorem.paragraphs(40), thesis: Faker::Lorem.sentence, title: Faker::Hacker.ingverb, rating: Faker::Number.digit)
+    user.reviews.create!(movie: movie, body: Faker::Lorem.paragraphs(40).join(','), thesis: Faker::Lorem.sentence, title: Faker::Hacker.ingverb, rating: Faker::Number.digit)
   end
 end
 
 User.all.each do |user|
-  user.reviews.create(movie: Movie.find(1), body: Faker::Lorem.paragraphs(40), thesis: Faker::Lorem.sentence, title: Faker::Hacker.ingverb, rating: Faker::Number.digit)
+  user.reviews.create(movie: Movie.find(1), body: Faker::Lorem.paragraphs(40).join(','), thesis: Faker::Lorem.sentence, title: Faker::Hacker.ingverb, rating: Faker::Number.digit)
 end
 
 
@@ -96,5 +96,14 @@ Review.all.each do |review|
 end
 
 Review.all.each do |review|
-  review.topics.create!(keypoint: Keypoint.all.sample)
+  num = rand(100)
+  if num > 75
+    2.times do
+      review.topics.create!(keypoint: Keypoint.all.sample)
+    end
+  elsif num > 50
+    3.times do
+      review.topics.create!(keypoint: Keypoint.all.sample)
+    end
+  end
 end
