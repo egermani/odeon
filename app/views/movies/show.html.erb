@@ -1,11 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <div class="still">
-	<% if @movie.title == "Guardians of the Galaxy " || @movie.title == "Guardians of the Galaxy" %>
-  	<%= image_tag("guardians.jpg", width: 800, height: 450) %>
-  <% else %>
-  	<%= image_tag(@movie.still_path, width: 800, height: 450) %>
-  <% end %>
+  <%= image_tag(@movie.still_path, width: 800, height: 450) %>
 </div>
 <p>
   <strong>Movie:</strong>
