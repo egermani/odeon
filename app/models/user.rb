@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
 	end
 
 	def score
+		return 0 if self.votes_for.count == 0
 		(vote_count(3) * 4.0 + vote_count(2) * 3.0 + vote_count(1) * 2.0 + vote_count(0) * 1.0)/self.votes_for.count
 	end
 

@@ -20,7 +20,7 @@ class Review < ActiveRecord::Base
     end
 
     score += 40 if self.reviewer.trusted == true
-    p score
+    score
   end
 
 end

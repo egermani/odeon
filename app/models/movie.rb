@@ -35,8 +35,9 @@ class Movie < ActiveRecord::Base
 			@reviews += self.reviews.select do |review| review.keypoints.include?(Keypoint.find(5))
 			end
 		end
+
 		@reviews = @reviews.uniq
-		return @reviews
+		return @reviews.sort_by{|review| review.score * -1}
 	end
 
 	def composite_score
