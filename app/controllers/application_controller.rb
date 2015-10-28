@@ -7,4 +7,7 @@ class ApplicationController < ActionController::Base
     @movies = Movie.sort_by_hotness
   end
 
+  def logged_in?
+  	session[:user_id] != nil
+  end
 end
