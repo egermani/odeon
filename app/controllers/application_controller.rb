@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def main
-    @movies = Movie.sort
+    @movies = Movie.sort_by_hotness
   end
 
 end
