@@ -1,14 +1,14 @@
 <div class="still center featured">
   <div class="featured-image">
-    <a href="/reviews/<%=@movies[0].reviews[0].id%>"><img width='100%' src="<%= @movies[0].still_path %>"></a>
-    <h1><b><%=@movies[0].title.upcase%></b></h1>
+    <a href="/reviews/<%=@movies[0].reviews[0].id%>"><%= image_tag(@movies[0].still_path, width: "100%") %></a>
+    <h1><%=@movies[0].title.upcase%></h1>
   </div>
   <div class="featured-text padding-top-2">
     <p class="featured-thesis">
       <i><%= @movies[0].reviews[0].thesis %></i>
     </p>
     <p class="landing-review padding-top-2">
-      <%= @movies[0].reviews[0].body %>
+      <%= truncate(@movies[0].reviews[0].body, length: 400) %>
     </p>
   </div>
 </div>
@@ -19,7 +19,7 @@
   <div class="row">
       <div class="col-xs-4 small-movie-feature">
           <div class="div-top">
-            <a href="/movies/<%=@movies[1].id%>"><img width = '300px' src="<%= @movies[1].still_path%>"></a>
+            <a href="/movies/<%=@movies[1].id%>"><%= image_tag(@movies[1].still_path, width: 300) %></a>
           </div>
           <div class="div-bot">
             <p><strong><%=@movies[1].title%></strong></p>
@@ -29,7 +29,7 @@
       </div>
       <div class="col-xs-4 small-movie-feature">
         <div class="div-top">
-          <a href="/movies/<%=@movies[2].id%>"><img width = '300px' src="<%= @movies[2].still_path%>"></a>
+          <a href="/movies/<%=@movies[2].id%>"><%= image_tag(@movies[2].still_path, width: 300) %></a>
         </div>
         <div class="div-bot">
           <p><strong><%=@movies[2].title%></strong></p>
@@ -39,7 +39,7 @@
       </div>
       <div class="col-xs-4 small-movie-feature">
         <div class="div-top">
-          <a href="/movies/<%=@movies[3].id%>"><img width = '300px' src="<%= @movies[3].still_path%>"></a>
+          <a href="/movies/<%=@movies[3].id%>"><%= image_tag(@movies[3].still_path, width: 300) %></a>
         </div>
         <div class="div-bot">
           <p><strong><%=@movies[3].title%></strong></p>
