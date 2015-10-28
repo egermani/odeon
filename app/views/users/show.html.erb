@@ -21,6 +21,13 @@
 </p>
 
 <p>
-  <strong>Current Votes:</strong>
-  <%= @user.votes %>
+  <h3>Your Reviews:</h3>
+  <% @reviews = @user.reviews %>
+  <%= render @reviews %>
+</p>
+
+<p>
+<h3>Reviews You're Following:</h3>
+  <% @reviews = @user.votes.map(&:review) %> 
+  <%= render @reviews %>
 </p>
