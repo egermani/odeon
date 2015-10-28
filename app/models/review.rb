@@ -12,4 +12,15 @@ class Review < ActiveRecord::Base
   validates :thesis, presence: true
   validates :title, presence: true
   validates :rating, presence: true
+
+  def score
+    score = 0
+    self.votes.each do |vote|
+      score += vote.sentiment
+    end
+
+    score += 40 if self.reviewer.trusted == true
+    p score
+  end
+
 end

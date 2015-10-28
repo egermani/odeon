@@ -61,4 +61,8 @@ class Movie < ActiveRecord::Base
 		Movie.includes(reviews: [:critiques]).all.sort_by {|movie| movie.hot_score}
 	end
 
+	def sort_reviews
+		reviews.all.sort_by {|review| review.score * -1}
+	end
+
 end
