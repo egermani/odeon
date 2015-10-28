@@ -35,7 +35,7 @@ $(document).ready(function(){
     }
     $.ajax({
       url: $(this).attr('href'),
-      method: "get"
+      method: "get",
     })
     .done(function(response){
       $('.reviews-container').html(response);
