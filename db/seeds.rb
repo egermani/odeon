@@ -14,7 +14,7 @@ CSV.foreach('db/movies.csv', headers: true) do |movie|
                 :genres => movie["Genre"].split(", ").map {|g| Genre.find_or_create_by(name: g)},
                 :director => movie["Director"],
                 :synopsis => movie["Description"],
-                :still_path => Faker::Avatar.image)
+                :still_path => movie["imdb_id"])
 end
 
 keypoints = [{image_path: Faker::Avatar.image, name: "Acting"},
@@ -22,8 +22,7 @@ keypoints = [{image_path: Faker::Avatar.image, name: "Acting"},
              {image_path: Faker::Avatar.image, name: "Score"},
              {image_path: Faker::Avatar.image, name: "Writing"},
              {image_path: Faker::Avatar.image, name: "Visual Effects"},
-             {image_path: Faker::Avatar.image,
-               name: "Misc."}]
+             {image_path: Faker::Avatar.image,name: "Misc."}]
 
 puts "Creating Keypoints"
 
