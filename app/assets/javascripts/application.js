@@ -24,4 +24,21 @@ $(document).ready(function(){
     selector = $(this).attr('href');
     $('li#' + selector + " ul").toggle();
   });
+
+  $('body').on("click", ".keypoint-sort-tabs a", function(event){
+    event.preventDefault();
+    console.log($(this).css('background-color'));
+    if($(this).css('background-color')=='rgb(255, 255, 255)')
+         $(this).css('background-color', '#000');
+    else {
+         $(this).css('background-color', '#fff');
+    }
+    $.ajax({
+      url: $(this).attr('href'),
+      method: "get"
+    })
+    .done(function(response){
+      $('.reviews-container').html(response);
+    });
+  });
 });

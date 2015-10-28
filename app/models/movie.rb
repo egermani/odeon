@@ -1,4 +1,5 @@
 class Movie < ActiveRecord::Base
+	attr_accessor :acting, :cinema, :score, :writing, :sfx
 	has_many :reviews
   has_many :movie_genres
   has_many :genres, through: :movie_genres
@@ -10,6 +11,32 @@ class Movie < ActiveRecord::Base
 
 	def self.sort
 		Movie.all.sort_by {|movie| movie.reviews.count * -1}
+	end
+
+	def sort_state(args = {})
+		@reviews = self.reviews.where(:id => nil).where("id IS NOT ?", nil)
+		if args[:acting]
+			@reviews += self.reviews.select do |review| review.keypoints.include?(Keypoint.first)
+			end
+		end
+		if args[:cinema]
+			@reviews += self.reviews.select do |review| review.keypoints.include?(Keypoint.find(2))
+			end
+		end
+		if args[:score]
+			@reviews += self.reviews.select do |review| review.keypoints.include?(Keypoint.find(3))
+			end
+		end
+		if args[:writing]
+			@reviews += self.reviews.select do |review| review.keypoints.include?(Keypoint.find(4))
+			end
+		end
+		if args[:sfx]
+			@reviews += self.reviews.select do |review| review.keypoints.include?(Keypoint.find(5))
+			end
+		end
+		@reviews = @reviews.uniq
+		return @reviews
 	end
 
 	def composite_score
@@ -27,7 +54,7 @@ class Movie < ActiveRecord::Base
 		reviews.each do |review|
 			score += (review.critiques.count * 0.25)
 		end
-		p score
+		score
 	end
 
 	def self.sort_by_hotness

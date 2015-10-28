@@ -9,18 +9,28 @@
 </div>
 <div class="keypoint">
 		<!-- // Acting -->
+		<% if review.keypoints.include?(Keypoint.first) %>
 		<i class="glyphicon glyphicon-user"></i>
-		
+		<% end %>
+
 		<!-- // Cinematography -->
+		<% if review.keypoints.include?(Keypoint.find(2))%>
 		<i class="glyphicon glyphicon-film"></i>
+		<% end %>
 
 		<!-- // Score -->
+		<% if review.keypoints.include?(Keypoint.find(3)) %>
 		<i class="glyphicon glyphicon-music"></i>
+		<% end %>
 
 		<!-- // Writing -->
+		<% if review.keypoints.include?(Keypoint.find(4)) %>
 		<i class="glyphicon glyphicon-pencil"></i>
+		<% end %>
 
 		<!-- // Special Effects -->
+		<% if review.keypoints.include?(Keypoint.find(5)) %>
 		<i class="glyphicon glyphicon-fire"></i>
+		<% end %>
 </div>
 <hr/>
