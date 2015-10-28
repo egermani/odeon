@@ -41,10 +41,24 @@ class Movie < ActiveRecord::Base
 
 	def composite_score
 		if reviews.length == 0
-			"??"
+			"N/A"
 		else
 			reviews.map(&:rating).reduce(:+) / reviews.count
 		end
+	end
+
+	def hot_score
+		score = 100
+		score -= ((Time.now - created_at)/3600)
+		score += (reviews.count * 2.5)
+		reviews.each do |review|
+			score += (review.critiques.count * 0.25)
+		end
+		score
+	end
+
+	def self.sort_by_hotness
+		Movie.includes(reviews: [:critiques]).all.sort_by {|movie| movie.hot_score}
 	end
 
 end
