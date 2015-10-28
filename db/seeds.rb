@@ -22,8 +22,7 @@ keypoints = [{image_path: Faker::Avatar.image, name: "Acting"},
              {image_path: Faker::Avatar.image, name: "Score"},
              {image_path: Faker::Avatar.image, name: "Writing"},
              {image_path: Faker::Avatar.image, name: "Visual Effects"},
-             {image_path: Faker::Avatar.image,
-               name: "Misc."}]
+             {image_path: Faker::Avatar.image, name: "Misc."}]
 
 puts "Creating Keypoints"
 
@@ -71,6 +70,10 @@ end
 end
 
 puts "Creating Topics"
+
+Review.all.each do |review|
+  review.topics.create!(keypoint: Keypoint.all.sample)
+end
 
 Review.all.each do |review|
   review.topics.create!(keypoint: Keypoint.all.sample)

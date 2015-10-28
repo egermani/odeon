@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :movies
 
+  get 'movies/:id/sort/:sort_type' => 'movies#sort'
+
   resources :users
 
   resources :reviews do

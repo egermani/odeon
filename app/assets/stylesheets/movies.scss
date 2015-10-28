@@ -1,3 +1,53 @@
 // Place all the styles related to the movies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.keypoint-sort-tabs {
+  list-style: none;
+  border-bottom:2px solid black;
+  height: 49px;
+  width: 100%;
+}
+
+.keypoint-sort-tabs a {
+  background-color: #000;
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 2em;
+}
+
+.keypoint-sort-tabs a:hover {
+  background-color: #fff;
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 2em;
+}
+
+.keypoint-sort-tabs a:visited {
+  background-color: #fff;
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 2em;
+}
+
+.keypoint-sort-tabs li {
+  display: inline-block;
+  position: relative;
+  left: 42%;
+  font-size: 1em;
+}
+.keypoint-sort-tabs li i {
+  padding: 10px 10px 10px 10px;
+  border-left:1px solid black;
+  border-right:1px solid black;
+  border-top:1px solid black;
+}

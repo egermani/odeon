@@ -10,7 +10,13 @@ class MoviesController < ApplicationController
   # GET /movies/1
   # GET /movies/1.json
   def show
+    session[:acting] = true
+    session[:cinema] = true
+    session[:writing] = true
+    session[:score] = true
+    session[:sfx] = true
     session[:movie_id] = @movie.id
+    @reviews = @movie.reviews
   end
 
   # GET /movies/new
@@ -60,6 +66,24 @@ class MoviesController < ApplicationController
       format.html { redirect_to movies_url, notice: 'Movie was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def sort
+    case params[:sort_type]
+    when "acting"
+      session[:acting] = !session[:acting]
+    when "cinema"
+      session[:cinema] = !session[:cinema]
+    when "score"
+      session[:score] = !session[:score]
+    when "writing"
+      session[:writing] = !session[:writing]
+    when "sfx"
+      session[:sfx] = !session[:sfx]
+    end
+    @movie = Movie.find(session[:movie_id])
+    @reviews = @movie.sort_state({acting: session[:acting], cinema: session[:cinema], score: session[:score], writing: session[:writing], sfx: session[:sfx]})
+    render 'show'
   end
 
   private

@@ -30,9 +30,19 @@
   <%= @movie.synopsis %>
 </p>
 
-<%= link_to "Review this film", new_review_path(:movie => @movie.id)%> 
+<%= link_to "Review this film", new_review_path(:movie => @movie.id)%>
 
-<%= render @movie.reviews %>
+<div class="keypoint-sort-tabs">
+  <ul>
+    <a href="/movies/<%=@movie.id%>/sort/acting"><li><i class="crit-icon glyphicon glyphicon-user"></i></li></a>
+    <a href="/movies/<%=@movie.id%>/sort/cinema"><li><i class="crit-icon glyphicon glyphicon-film"></i></li></a>
+    <a href="/movies/<%=@movie.id%>/sort/score"><li><i class="crit-icon glyphicon glyphicon-music"></i></li></a>
+    <a href="/movies/<%=@movie.id%>/sort/writing"><li><i class="crit-icon glyphicon glyphicon-pencil"></i></li></a>
+    <a href="/movies/<%=@movie.id%>/sort/sfx"><li><i class="crit-icon glyphicon glyphicon-fire"></i></li></a>
+  </ul>
+</div>
+
+<%= render @reviews %>
 
 
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
