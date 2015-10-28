@@ -1,14 +1,14 @@
 <div class="still center featured">
   <div class="featured-image">
     <a href="/reviews/<%=@movies[0].reviews[0].id%>"><img width='100%' src="<%= @movies[0].still_path %>"></a>
-    <h1><b><%=@movies[0].title.upcase%></b></h1>
+    <h1><%=@movies[0].title.upcase%></h1>
   </div>
   <div class="featured-text padding-top-2">
     <p class="featured-thesis">
       <i><%= @movies[0].reviews[0].thesis %></i>
     </p>
     <p class="landing-review padding-top-2">
-      <%= @movies[0].reviews[0].body %>
+      <%= truncate(@movies[0].reviews[0].body, length: 400) %>
     </p>
   </div>
 </div>
