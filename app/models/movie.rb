@@ -50,7 +50,7 @@ class Movie < ActiveRecord::Base
 
 	def hot_score
 		score = 100
-		score -= ((Time.now - created_at)/3600)
+		score -= ((Time.now - created_at)/(3600*24))
 		score += (reviews.count * 2.5)
 		reviews.each do |review|
 			score += (review.critiques.count * 0.25)
@@ -59,7 +59,11 @@ class Movie < ActiveRecord::Base
 	end
 
 	def self.sort_by_hotness
-		Movie.includes(reviews: [:critiques]).all.sort_by {|movie| movie.hot_score}
+		Movie.includes(reviews: [:critiques]).all.sort_by {|movie| movie.hot_score * -1}
+	end
+
+	def sort_reviews
+		reviews.all.sort_by {|review| review.score * -1}
 	end
 
 end
