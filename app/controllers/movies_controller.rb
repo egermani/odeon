@@ -16,7 +16,7 @@ class MoviesController < ApplicationController
     session[:score] = true
     session[:sfx] = true
     session[:movie_id] = @movie.id
-    @reviews = @movie.reviews
+    @reviews = @movie.reviews.sort_by { |review| review.score * -1 }
   end
 
   # GET /movies/new
