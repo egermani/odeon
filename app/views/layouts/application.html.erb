@@ -9,7 +9,7 @@
 <body>
   <div class="custom-nav center">
     <ul id="menu">
-      <li><a href="/">home</a></li>
+      <li><a href="/">Home</a></li>
       <% if session[:user_id] %>
         <li>
           <%= link_to "Log out", { controller: :sessions, action: :destroy, id: session[:user_id] }, method: :delete %>

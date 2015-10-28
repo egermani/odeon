@@ -71,6 +71,10 @@
 
 .custom-nav {
   padding-bottom: 8px;
-  border-bottom: thick solid black;
+  border-bottom: solid black;
   margin-bottom: 20px;
+}
+
+.custom-nav ul {
+  text-align: center;
 }
