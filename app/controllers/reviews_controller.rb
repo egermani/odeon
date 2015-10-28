@@ -14,11 +14,15 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/new
   def new
-    if params[:movie]
-      @movie = Movie.find(params[:movie])
-      @review = Review.new
+    if logged_in?
+      if params[:movie]
+        @movie = Movie.find(params[:movie])
+        @review = Review.new
+      else
+        redirect_to root_path unless params[:movie]
+      end
     else
-      redirect_to root_path unless params[:movie]
+      redirect_to new_session_path
     end
   end
 
