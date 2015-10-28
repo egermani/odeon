@@ -2,8 +2,8 @@ require 'csv'
 
 # table.headers => => ["Movie", "Release Year", "Rating", "# of Ratings", "Genre", "Awards", "Oscar Ws", "Oscar Ns", "Other Ws", "Other Ns", "Director", "Cast", "Description"]
 
-5.times do
-  User.create!(username: Faker::Internet.user_name, email: Faker::Internet.email, password: "password")
+40.times do
+  User.create(username: Faker::Internet.user_name, email: Faker::Internet.email, password: "password")
 end
 
 puts "Creating Movies"
@@ -32,36 +32,56 @@ end
 
 puts "Creating Reviews"
 
-User.all.each do |user|
-  user.reviews.create!(movie: Movie.all.sample, body: Faker::Lorem.paragraphs(3), thesis: Faker::Lorem.sentence, title: Faker::Hacker.ingverb, rating: Faker::Number.digit)
-  user.reviews.create(movie: Movie.find(1), body: Faker::Lorem.paragraphs(3), thesis: Faker::Lorem.sentence, title: Faker::Hacker.ingverb, rating: Faker::Number.digit)
+5.times do
+  User.all.each do |user|
+    movie = Movie.all.sample
+    user.reviews.create!(movie: movie, body: Faker::Lorem.paragraphs(40), thesis: Faker::Lorem.sentence, title: Faker::Hacker.ingverb, rating: Faker::Number.digit)
+  end
 end
+
+User.all.each do |user|
+  user.reviews.create(movie: Movie.find(1), body: Faker::Lorem.paragraphs(40), thesis: Faker::Lorem.sentence, title: Faker::Hacker.ingverb, rating: Faker::Number.digit)
+end
+
 
 puts "Creating Votes"
 
+Review.last(15).each do |review|
+  User.all.each do |user|
+    user.votes.create(review: review, sentiment: Faker::Number.between(2, 3))
+  end
+end
+
 User.all.each do |user|
   Review.all.each do |review|
-    user.votes.create!(review: review, sentiment: Faker::Number.between(0, 3))
+    user.votes.create(review: review, sentiment: Faker::Number.between(0, 3))
+  end
+end
+
+User.all.each do |user|
+  if user.is_trusted?
+    user.update(trusted: true)
   end
 end
 
 puts "Creating Critiques"
 
 User.all.each do |user|
-  Review.all.each do |review|
+  2.times do
+    review = Review.all.sample
     user.critiques.create!(review: review, keypoint_id: Keypoint.all.sample.id, title: Faker::Lorem.word, body: Faker::Lorem.sentence)
   end
 end
 
 puts "Creating Replies"
 
-20.times do
+10.times do
   user = User.all.sample
   crit = Critique.all.sample
   user.replies.create(critique: crit, body: Faker::Lorem.sentence)
 end
 
-20.times do
+10.times do
   movie = Movie.first
   user = User.all.sample
   review = movie.reviews.sample

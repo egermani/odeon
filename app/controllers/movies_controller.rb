@@ -84,7 +84,10 @@ class MoviesController < ApplicationController
     end
     @movie = Movie.find(session[:movie_id])
     @reviews = @movie.sort_state({acting: session[:acting], cinema: session[:cinema], score: session[:score], writing: session[:writing], sfx: session[:sfx]})
-    render @reviews
+    if request.xhr?
+      return render @reviews
+    end
+    render 'show'
   end
 
   private
