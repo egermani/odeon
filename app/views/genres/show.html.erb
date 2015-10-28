@@ -1,0 +1,31 @@
+<div class="title">
+  <p>
+    <%= Genre.find(params[:id]).name%>
+  </p>
+</div>
+<div>
+  <ul>
+    <% @movies.each do |movie| %>
+      <li style="list-style: none;">
+        <div class="col-md-12">
+          <div class="movie-image col-md-1">
+            <img src="<%=movie.still_path%>">
+          </div>
+          <div class="movie-container col-md-11 pull-right">
+            <div class="movie-title">
+              <a href="/movies/<%=movie.id%>"><%=movie.title%></a>
+            </div>
+            <div class="movie-info">
+              <p>
+                Director: <%=movie.director%> | Rating: <%=movie.composite_score%>
+              </p>
+              <p>
+                Relese date: <%=movie.release_date %> | Reviews: <%=movie.reviews.count%>
+              </p>
+            </div>
+          </div>
+        </div>
+      </li>
+    <%end%>
+  </ul>
+</div>

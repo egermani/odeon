@@ -30,6 +30,8 @@
   <%= @movie.synopsis %>
 </p>
 
+<%= link_to "Review this film", new_review_path(:movie => @movie.id)%> 
+
 <%= render @movie.reviews %>
 
 
