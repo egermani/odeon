@@ -9,13 +9,12 @@ ul#menu li {
 }
 ul#menu li > ul {
   display: none;
-  columns: 4;
-  -webkit-columns: 4;
-  -moz-columns: 4;
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
 }
 ul#menu li:hover > ul {
   display:inline-block;
   position: absolute;
   background-color: #f8f8f8;
-  opacity: 0.9;
 }

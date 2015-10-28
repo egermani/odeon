@@ -24,7 +24,7 @@
           <div class="div-bot">
             <p><strong><%=@movies[1].title%></strong></p>
             <p><strong><i><%=@movies[1].reviews[0].thesis%></i></strong></p>
-            <p class="max-lines"><%=@movies[1].reviews[0].body%></p>
+            <%= truncate(@movies[1].reviews[0].body, length: 200) %><a href="/reviews/<%=@movies[1].reviews[0].id%>">read more</a>
           </div>
       </div>
       <div class="col-xs-4 small-movie-feature">
@@ -34,7 +34,7 @@
         <div class="div-bot">
           <p><strong><%=@movies[2].title%></strong></p>
           <p><strong><i><%=@movies[2].reviews[0].thesis%></i></strong></p>
-          <p class="max-lines"><%=@movies[2].reviews[0].body%></p>
+          <%= truncate(@movies[2].reviews[0].body, length: 200) %><a href="/reviews/<%=@movies[2].reviews[0].id%>">read more</a>
         </div>
       </div>
       <div class="col-xs-4 small-movie-feature">
@@ -44,7 +44,7 @@
         <div class="div-bot">
           <p><strong><%=@movies[3].title%></strong></p>
           <p><strong><i><%=@movies[3].reviews[0].thesis%></i></strong></p>
-          <p class="max-lines"><%=@movies[3].reviews[0].body%></p>
+          <%= truncate(@movies[3].reviews[0].body, length: 200) %><a href="/reviews/<%=@movies[3].reviews[0].id%>">read more</a>
         </div>
       </div>
   </div>

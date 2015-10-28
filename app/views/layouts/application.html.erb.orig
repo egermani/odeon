@@ -7,8 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<<<<<<< HEAD
   <div class="custom-nav center">
+=======
+  <div class="navbar navbar-default center">
     <div id="logo">ODEON</div>
+>>>>>>> origin
     <ul id="menu">
       <li><a href="/">Home</a></li>
       <% if session[:user_id] %>
