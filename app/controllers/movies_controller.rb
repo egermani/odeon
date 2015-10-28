@@ -69,6 +69,7 @@ class MoviesController < ApplicationController
   end
 
   def sort
+    p params
     case params[:sort_type]
     when "acting"
       session[:acting] = !session[:acting]
@@ -83,7 +84,7 @@ class MoviesController < ApplicationController
     end
     @movie = Movie.find(session[:movie_id])
     @reviews = @movie.sort_state({acting: session[:acting], cinema: session[:cinema], score: session[:score], writing: session[:writing], sfx: session[:sfx]})
-    render 'show'
+    render @reviews
   end
 
   private

@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
 .keypoint-sort-tabs {
   list-style: none;
   border-bottom:2px solid black;
@@ -19,18 +20,9 @@
   font-size: 2em;
 }
 
-.keypoint-sort-tabs a:hover {
-  background-color: #fff;
-  display: inline-block;
-  position: relative;
-  left: 50%;
-  margin-left: 10px;
-  margin-right: 10px;
-  font-size: 2em;
-}
 
-.keypoint-sort-tabs a:visited {
-  background-color: #fff;
+.keypoint-sort-tabs a:hover {
+  background-color: #bbb;
   display: inline-block;
   position: relative;
   left: 50%;
@@ -50,4 +42,8 @@
   border-left:1px solid black;
   border-right:1px solid black;
   border-top:1px solid black;
+}
+
+.light-bg {
+  background-color: #fff;
 }

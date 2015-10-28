@@ -42,8 +42,9 @@
   </ul>
 </div>
 
-<%= render @reviews %>
-
+<div class="reviews-container">
+  <%= render @reviews %>
+</div>
 
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <%= link_to 'Back', movies_path %>

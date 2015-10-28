@@ -16,26 +16,26 @@ class Movie < ActiveRecord::Base
 	def sort_state(args = {})
 		@reviews = self.reviews.where(:id => nil).where("id IS NOT ?", nil)
 		if args[:acting]
-			@reviews += self.reviews.select do |review| review.topics.select{|topic| topic.keypoint_id == 1}
+			@reviews += self.reviews.select do |review| review.keypoints.include?(Keypoint.first)
 			end
 		end
 		if args[:cinema]
-			@reviews += self.reviews.select do |review| review.topics.select{|topic| topic.keypoint_id == 2}
+			@reviews += self.reviews.select do |review| review.keypoints.include?(Keypoint.find(2))
 			end
 		end
 		if args[:score]
-			@reviews += self.reviews.select do |review| review.topics.select{|topic| topic.keypoint_id == 3}
+			@reviews += self.reviews.select do |review| review.keypoints.include?(Keypoint.find(3))
 			end
 		end
 		if args[:writing]
-			@reviews += self.reviews.select do |review| review.topics.select{|topic| topic.keypoint_id == 4}
+			@reviews += self.reviews.select do |review| review.keypoints.include?(Keypoint.find(4))
 			end
 		end
 		if args[:sfx]
-			@reviews += self.reviews.select do |review| review.topics.select{|topic| topic.keypoint_id == 5}
+			@reviews += self.reviews.select do |review| review.keypoints.include?(Keypoint.find(5))
 			end
 		end
-		p @reviews.class
+		@reviews = @reviews.uniq
 		return @reviews
 	end
 
